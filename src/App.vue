@@ -1,16 +1,19 @@
 <script>
 import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue'
+import AppFooter from './components/AppFooter.vue'
+
 
 export default {
     name: 'ComicsApp',
-    components: { AppHeader, AppMain }
+    components: { AppHeader, AppMain, AppFooter }
 }
 </script>
 
 <template>
     <AppHeader />
     <AppMain />
+    <AppFooter />
     <footer></footer>
 </template>
 
@@ -27,6 +30,12 @@ export default {
 }
 
 /* Generics */
+body {
+    height: 100vh;
+    background-color: #fff;
+    font-family: 'Encode Sans Condensed', sans-serif;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -35,9 +44,5 @@ img {
 a {
     color: black;
     text-decoration: none;
-}
-
-body {
-    font-family: 'Encode Sans Condensed', sans-serif;
 }
 </style>
