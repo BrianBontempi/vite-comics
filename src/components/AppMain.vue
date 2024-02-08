@@ -1,17 +1,22 @@
 <script>
+import ComicsCard from './ComicsCard.vue';
 export default {
-    name: 'AppMain'
+    name: 'AppMain',
+    props: {
+        comics: Array
+    },
+    components: { ComicsCard }
 }
 </script>
 
 <template>
     <main>
-        <section class="upper-content">
-            <div class="container">
-                <h1>-- Content goes here --</h1>
+        <section id="comics-list" class="upper-content">
+            <div class="container card-container">
+                <ComicsCard v-for="comic in comics" :key="comic.series" :image="comic.thumb" :title="comic.series" />
             </div>
         </section>
-        <section class="mid-content">
+        <section class="lower-content">
             <div class="container">
                 <ul>
                     <li><img src="../assets/img/buy-comics-digital-comics.png" alt="">digital comics</li>
@@ -21,9 +26,6 @@ export default {
                     <li><img src="../assets/img/buy-dc-power-visa.svg" alt="">dc power visa</li>
                 </ul>
             </div>
-        </section>
-        <section class="lower-content">
-
         </section>
     </main>
 </template>
@@ -43,7 +45,7 @@ main {
     font-size: 30px;
 }
 
-.mid-content {
+.lower-content {
     background-color: #0282F9;
     display: flex;
     justify-content: space-around;
@@ -70,4 +72,15 @@ main {
 .mid-content ul li img {
     margin: 0 .50rem 0 0;
     height: 50%;
-}</style>
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+
+    .comics-card {
+        flex-basis: 15%;
+    }
+}
+</style>
