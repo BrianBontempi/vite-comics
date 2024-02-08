@@ -1,21 +1,25 @@
 <script>
 import AppHeader from './components/AppHeader.vue'
+import AppMain from './components/AppMain.vue'
 
 export default {
     name: 'ComicsApp',
-    components: {
-        AppHeader
-    }
+    components: { AppHeader, AppMain }
 }
 </script>
 
 <template>
     <AppHeader />
-    <main></main>
+    <AppMain />
     <footer></footer>
 </template>
 
 <style>
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
 * {
     margin: 0;
     padding: 0;
