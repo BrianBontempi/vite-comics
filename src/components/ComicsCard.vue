@@ -15,8 +15,22 @@ export default {
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .comics-card {
-    padding: 20px;
+    padding: 0 10px 30px;
+}
+
+.comics-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: top;
+}
+
+.comics-card h2 {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 </style> 

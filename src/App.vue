@@ -102,13 +102,13 @@ export default {
     <AppHeader />
     <AppMain :comics="comics" />
     <AppFooter />
-    <footer></footer>
 </template>
 
 <style>
 .container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 * {

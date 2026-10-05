@@ -1,29 +1,51 @@
 <script>
 import ComicsCard from './ComicsCard.vue';
+import digitalComics from '../assets/img/buy-comics-digital-comics.png';
+import merchandise from '../assets/img/buy-comics-merchandise.png';
+import subscriptions from '../assets/img/buy-comics-subscriptions.png';
+import shopLocator from '../assets/img/buy-comics-shop-locator.png';
+import powerVisa from '../assets/img/buy-dc-power-visa.svg';
+
 export default {
     name: 'AppMain',
     props: {
         comics: Array
     },
-    components: { ComicsCard }
+    components: { ComicsCard },
+    data: () => ({
+        buyLinks: [
+            { text: 'digital comics', image: digitalComics },
+            { text: 'dc merchandise', image: merchandise },
+            { text: 'subscription', image: subscriptions },
+            { text: 'comic shop locator', image: shopLocator },
+            { text: 'dc power visa', image: powerVisa },
+        ]
+    })
 }
 </script>
 
 <template>
     <main>
+        <section class="jumbotron"></section>
         <section id="comics-list" class="upper-content">
-            <div class="container card-container">
-                <ComicsCard v-for="comic in comics" :key="comic.series" :image="comic.thumb" :title="comic.series" />
+            <div class="container">
+                <h1 class="current-series">current series</h1>
+                <div class="card-container">
+                    <ComicsCard v-for="comic in comics" :key="comic.series" :image="comic.thumb" :title="comic.series" />
+                </div>
+                <div class="text-center">
+                    <button class="load-more">load more</button>
+                </div>
             </div>
         </section>
         <section class="lower-content">
             <div class="container">
                 <ul>
-                    <li><img src="../assets/img/buy-comics-digital-comics.png" alt="">digital comics</li>
-                    <li><img src="../assets/img/buy-comics-merchandise.png" alt="">dc merchandise</li>
-                    <li><img src="../assets/img/buy-comics-subscriptions.png" alt="">subscription</li>
-                    <li><img src="../assets/img/buy-comics-shop-locator.png" alt="">comic shop locator</li>
-                    <li><img src="../assets/img/buy-dc-power-visa.svg" alt="">dc power visa</li>
+                    <li v-for="link in buyLinks" :key="link.text">
+                        <a href="#">
+                            <img :src="link.image" :alt="link.text">{{ link.text }}
+                        </a>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -32,34 +54,64 @@ export default {
 
 <style scoped>
 main {
-    background-color: blue;
     color: #fff;
+}
+
+.jumbotron {
+    height: 400px;
+    background-image: url('../assets/img/jumbotron.jpg');
+    background-size: cover;
+    background-position: top;
 }
 
 .upper-content {
     background-color: #1C1C1C;
-    padding: 1.5rem 0;
+    padding: 0 0 1.5rem;
 }
 
-.upper-content h1 {
-    font-size: 30px;
+.upper-content .container {
+    position: relative;
+}
+
+.current-series {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    transform: translateY(-50%);
+
+    background-color: #0282F9;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.load-more {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.6rem 3rem;
+    border: none;
+    background-color: #0282F9;
+    color: #fff;
+    cursor: pointer;
 }
 
 .lower-content {
     background-color: #0282F9;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
     padding: 3rem 0;
 }
 
-.mid-content ul {
+.lower-content ul {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     list-style: none;
 }
 
-.mid-content ul li {
+.lower-content ul li a {
     text-transform: uppercase;
     font-weight: 300;
     font-size: 16px;
@@ -69,18 +121,19 @@ main {
     margin: 1rem;
 }
 
-.mid-content ul li img {
-    margin: 0 .50rem 0 0;
-    height: 50%;
+.lower-content ul li img {
+    margin: 0 .5rem 0 0;
+    height: 50px;
+    width: auto;
 }
 
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    padding-top: 4rem;
+}
 
-    .comics-card {
-        flex-basis: 15%;
-    }
+.card-container .comics-card {
+    flex-basis: calc(100% / 6);
 }
 </style>
