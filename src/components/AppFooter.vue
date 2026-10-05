@@ -82,7 +82,30 @@ export default {
     background-image: url('../assets/img/footer-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 3rem 0;
+    overflow: hidden;
+}
+
+.upper-footer .container {
+    position: relative;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+/* logo DC di sfondo a destra */
+.upper-footer .container::after {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: 0;
+    width: 560px;
+    height: 560px;
+    background-image: url('../assets/img/dc-logo-bg.png');
+    background-repeat: no-repeat;
+}
+
+.upper-footer .footer-row {
+    position: relative;
+    z-index: 1;
 }
 
 .footer-row {

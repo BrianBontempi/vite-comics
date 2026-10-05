@@ -61,7 +61,7 @@ export default {
 <template>
     <header>
         <figure>
-            <img id="logo" src="../assets/img/dc-logo.png" alt="">
+            <img id="logo" src="../assets/img/dc-logo.png" alt="DC Comics">
         </figure>
         <nav>
             <ul>
